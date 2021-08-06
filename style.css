@@ -37,7 +37,7 @@ body {
     background-color: rgb(127, 228, 215);
 }
 
-.operators {
+.non-digit {
     background-color:rgb(193, 240, 195);
 }
 
