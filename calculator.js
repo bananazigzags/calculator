@@ -48,6 +48,8 @@ numbers.forEach(number => {
 // clears the screen when C is clicked
 document.getElementById("C").addEventListener('click', () => {
     display.textContent = "";
+    firstNum = undefined;
+    secondNum = undefined;
 });
 
 let firstNum;
@@ -66,7 +68,9 @@ commands.forEach((command) => command.addEventListener('click', () => {
 // when "equals" is clicked, saves the second number, and displays the result
 document.getElementById("equal").addEventListener('click', () => {
     secondNum = parseInt(display.textContent);
-    display.textContent = operate(operator, firstNum, secondNum);
+    let result = operate(operator, firstNum, secondNum);
+    display.textContent = result;
+    firstNum = result;
 });
 
 // displays each number pressed
@@ -78,6 +82,8 @@ function keyPress(e) {
         // C clears the screen
         case 67:
             display.textContent = "";
+            firstNum = undefined;
+            secondNum = undefined;
             break;
         // numbers
         case 48:
@@ -133,7 +139,12 @@ function keyPress(e) {
             break;
         case 13:
             secondNum = parseInt(display.textContent);
-            display.textContent = operate(operator, firstNum, secondNum);
+            let result = operate(operator, firstNum, secondNum);
+            display.textContent = result;
+            firstNum = result;
+            break;
+        case 8:
+            display.textContent = display.textContent.slice(0, -1);
             break;
     }
 };
